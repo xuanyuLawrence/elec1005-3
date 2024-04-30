@@ -1,0 +1,44 @@
+{
+  "7cb9f28a-2145-4f00-baf2-52f69dd87372": {
+    "appActions": [
+      "providers/PowerPlatform.Governance/Operations/Read",
+      "providers/PowerPlatform.Governance/Operations/Write",
+      "providers/PowerPlatform.Governance/Operations/Delete"
+    ],
+    "connectionRef": {
+      "apiTier": "Standard",
+      "displayName": "SharePoint",
+      "iconUri": "https://connectoricons-prod.azureedge.net/releases/v1.0.1685/1.0.1685.3700/sharepointonline/icon.png",
+      "id": "/providers/microsoft.powerapps/apis/shared_sharepointonline",
+      "parameterHints": {},
+      "parameterHintsV2": {}
+    },
+    "datasets": {
+      "https://unisydneyedu.sharepoint.com/sites/ELEC1005_Library": {
+        "dataSources": {
+          "admin-list": {
+            "tableName": "5c4cda27-fb91-46e5-92a3-f43bf55ee958"
+          },
+          "book-list": {
+            "tableName": "b1820310-bbeb-44fc-bc7c-b544840bf3b7"
+          },
+          "Borrow-list": {
+            "tableName": "b5d517f2-e01e-4a5b-bd4b-78e1f2f2a199"
+          },
+          "user-list": {
+            "tableName": "6a0b4c98-1f27-4bea-97d1-a95aac1d5514"
+          }
+        }
+      }
+    },
+    "dataSources": [
+      "admin-list",
+      "book-list",
+      "Borrow-list",
+      "user-list"
+    ],
+    "dependencies": {},
+    "dependents": [],
+    "id": "7cb9f28a-2145-4f00-baf2-52f69dd87372"
+  }
+}

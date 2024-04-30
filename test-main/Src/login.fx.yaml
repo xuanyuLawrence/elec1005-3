@@ -1,0 +1,187 @@
+login As screen:
+    Fill: =
+    Height: =1136
+    LoadingSpinnerColor: =RGBA(0, 120, 212, 1)
+    OnVisible: |-
+        =UpdateContext({fromOtherPage: true})
+    Width: =640
+
+    username_input As text:
+        BorderColor: =RGBA(166, 166, 166, 1)
+        BorderThickness: =2
+        Color: =RGBA(166, 166, 166, 1)
+        Default: =""
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        FocusedBorderThickness: =4
+        Font: =Font.'Segoe UI'
+        Height: =70
+        HintText: ="User Name"
+        HoverBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        HoverColor: =RGBA(51, 51, 51, 1)
+        HoverFill: =RGBA(255, 255, 255, 1)
+        LineHeight: =1.3300781
+        PaddingBottom: =15
+        PaddingLeft: =16
+        PaddingRight: =16
+        PaddingTop: =15
+        PressedBorderColor: =RGBA(0, 120, 212, 1)
+        PressedColor: =RGBA(51, 51, 51, 1)
+        PressedFill: =RGBA(255, 255, 255, 1)
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Size: =22.5
+        Width: =560
+        X: =40
+        Y: =334
+        ZIndex: =1
+
+    password_input As text:
+        BorderColor: =RGBA(166, 166, 166, 1)
+        BorderThickness: =2
+        Color: =RGBA(166, 166, 166, 1)
+        Default: =""
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        FocusedBorderThickness: =4
+        Font: =Font.'Segoe UI'
+        Height: =70
+        HintText: ="passwords"
+        HoverBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        HoverColor: =RGBA(51, 51, 51, 1)
+        HoverFill: =RGBA(255, 255, 255, 1)
+        LineHeight: =1.3300781
+        Mode: =TextMode.Password
+        PaddingBottom: =15
+        PaddingLeft: =16
+        PaddingRight: =16
+        PaddingTop: =15
+        PressedBorderColor: =RGBA(0, 120, 212, 1)
+        PressedColor: =RGBA(51, 51, 51, 1)
+        PressedFill: =RGBA(255, 255, 255, 1)
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Size: =22.5
+        Width: =560
+        X: =40
+        Y: =498
+        ZIndex: =2
+
+    msft_Button_5 As button:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =0
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =RGBA(0, 120, 212, 1)
+        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Semibold
+        Height: =70
+        HoverBorderColor: =RGBA(0, 0, 0, 0)
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(0, 120, 212, 1), -10%)
+        OnSelect: |-
+            =If(
+                !IsBlank(
+                    LookUp(
+                        'admin-list',
+                        user_name = username_input.Text && passwords = password_input.Text
+                    )
+                ),
+                Navigate('admin-page');
+                Notify(
+                    "Login Success",
+                    NotificationType.Success
+                ),
+                Set(
+                    gblUsername,
+                    username_input.Text
+                ),
+                If(
+                    !IsBlank(
+                        LookUp(
+                            'user-list',
+                            UserName = username_input.Text && Password = password_input.Text
+                        )
+                    ),
+                    UpdateContext({loginStatus: "success"});
+                    Navigate('user-page');
+                    Notify(
+                        "Login Success",
+                        NotificationType.Success
+                    ),
+                    Notify(
+                        "Login Fail",
+                        NotificationType.Error
+                    )
+                )
+            )
+        PaddingBottom: =12
+        PaddingLeft: =56
+        PaddingRight: =56
+        PaddingTop: =11
+        PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Size: =26.25
+        Text: ="Login"
+        VerticalAlign: =VerticalAlign.Top
+        Width: =201
+        X: =219
+        Y: =760
+        ZIndex: =3
+
+    "'Frame 1_1' As groupContainer.manualLayoutContainer":
+        Height: =100
+        LayoutMode: ="manual"
+        Width: =100
+        X: =485
+        ZIndex: =4
+
+    msft_Button_6 As button:
+        BorderColor: =RGBA(0, 0, 0, 0)
+        BorderStyle: =BorderStyle.None
+        BorderThickness: =0
+        DisabledBorderColor: =RGBA(0, 0, 0, 0)
+        DisabledColor: =RGBA(166, 166, 166, 1)
+        DisabledFill: =RGBA(244, 244, 244, 1)
+        Fill: =RGBA(0, 120, 212, 1)
+        FocusedBorderColor: =ColorFade(Self.Fill, -75%)
+        Font: =Font.'Segoe UI'
+        FontWeight: =FontWeight.Semibold
+        Height: =70
+        HoverBorderColor: =RGBA(0, 0, 0, 0)
+        HoverColor: =RGBA(255, 255, 255, 1)
+        HoverFill: =ColorFade(RGBA(0, 120, 212, 1), -10%)
+        OnSelect: =Navigate(register)
+        PaddingBottom: =12
+        PaddingLeft: =56
+        PaddingRight: =56
+        PaddingTop: =11
+        PressedBorderColor: =ColorFade(RGBA(0, 120, 212, 1), -50%)
+        PressedColor: =RGBA(255, 255, 255, 1)
+        PressedFill: =ColorFade(RGBA(0, 120, 212, 1), -30%)
+        RadiusBottomLeft: =0
+        RadiusBottomRight: =0
+        RadiusTopLeft: =0
+        RadiusTopRight: =0
+        Size: =26.25
+        Text: ="Register"
+        VerticalAlign: =VerticalAlign.Top
+        Width: =241
+        X: =199
+        Y: =641
+        ZIndex: =5
+
