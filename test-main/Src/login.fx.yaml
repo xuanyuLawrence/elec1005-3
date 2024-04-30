@@ -165,7 +165,9 @@ login As screen:
         HoverBorderColor: =RGBA(0, 0, 0, 0)
         HoverColor: =RGBA(255, 255, 255, 1)
         HoverFill: =ColorFade(RGBA(0, 120, 212, 1), -10%)
-        OnSelect: =Navigate(register)
+        OnSelect: |-
+            =Navigate(register)
+            // test message
         PaddingBottom: =12
         PaddingLeft: =56
         PaddingRight: =56
